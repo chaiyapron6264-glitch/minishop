@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Header } from "@/components/header";
 import { LiffDebugIndicator } from "@/components/liff-debug-indicator";
 import { LiffProvider } from "@/components/liff-provider";
@@ -18,7 +19,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Header />
           {children}
           <MobileBottomNavigation />
-          <LiffDebugIndicator />
+          <Suspense fallback={null}>
+            <LiffDebugIndicator />
+          </Suspense>
         </LiffProvider>
       </body>
     </html>
