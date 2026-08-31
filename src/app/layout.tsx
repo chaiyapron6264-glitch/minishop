@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
+import { LiffDebugIndicator } from "@/components/liff-debug-indicator";
+import { LiffProvider } from "@/components/liff-provider";
 import { MobileBottomNavigation } from "@/components/mobile-bottom-navigation";
 import "./globals.css";
 
@@ -12,9 +14,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="th" className="h-full antialiased">
       <body className="min-h-full bg-white text-zinc-950">
-        <Header />
-        {children}
-        <MobileBottomNavigation />
+        <LiffProvider>
+          <Header />
+          {children}
+          <MobileBottomNavigation />
+          <LiffDebugIndicator />
+        </LiffProvider>
       </body>
     </html>
   );
